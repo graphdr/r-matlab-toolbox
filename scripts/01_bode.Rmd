@@ -270,3 +270,5 @@ library(devtools)
 session_info()
 ```
 
+--- 
+[main page](../README.md)
