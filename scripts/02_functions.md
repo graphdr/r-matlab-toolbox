@@ -2,15 +2,26 @@
 using R to write a MATLAB function file
 =======================================
 
-I want to create MATLAB function files from R:
+I want to create MATLAB function files from R to support the reproducibility of MATLAB course materials written in R Markdown.
 
--   In an R string, write the lines of a MATLAB user-defined function
--   In R, write those lines to a text file `function.m`
--   The function is then accessible to MATLAB scripts executed from R
--   Functions I use regularly can be collected in a single R script that I `source()` from any Rmd.
--   While functions are supported in scripts in MATLAB R2016b or later, my current plan is to write each function to separate m-file.
+The idea is to:
 
-My goal is to support the reproducibility of MATLAB course materials written in R Markdown.
+-   write the lines of a MATLAB user-defined function as a R string
+-   in R, write those lines to a text file `function.m`
+-   eventually write a single R script that creates all my commonly used m-functions that I can `source()` from any Rmd
+
+In MATLAB R2016b or later, multiple functions can be defined in a single script. However, my current plan is to create separate m-files for each function.
+
+managing files
+--------------
+
+I use relative file paths with respect to the RStudio Project working directory. My examples require a file structure that includes:
+
+    project\
+      |-- derived\
+      |-- results\
+      |-- scripts\
+      `-- project.Rproj
 
 getting started
 ---------------
@@ -42,7 +53,7 @@ reach::runMatlabCommand(add_to_path)
 write\_sys()
 ------------
 
-My test-case MATLAB function writes a system transfer function to a text file. The function is based on code from the Bode plot tutorial:
+My test-case MATLAB function, `write_sys.m`, writes a system transfer function to a text file. The function is based on the following code chunk from the Bode plot tutorial:
 
     % write sys to txt
     fid = fopen('results/sys_tf.txt', 'w');
@@ -50,20 +61,19 @@ My test-case MATLAB function writes a system transfer function to a text file. T
     fprintf(fid, '%s', tfString);
     fclose(fid);
 
-Formulating these lines as a MATLAB function in a string in the Rmd script and writing the lines to a text file with a `.m` suffix.
+I formulate formulate these lines as a MATLAB function in a string in the Rmd script. Use `cat()` to write the lines to a text file with a `.m` suffix in the `derived/` directory.
 
 ``` r
-# used-defined MATLAB function
+# user-defined MATLAB function
 function_lines <- "function write_sys(sys, path)
   fid = fopen(path, 'wt');
   tf_string = evalc('sys');
   fprintf(fid, tf_string);
   fclose(fid);
-end
+  end
 "
-
 # write to file 
-cat(function_lines, file = 'scripts/write_sys.m', sep = '\n', append = FALSE)
+cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
 ```
 
 The arguments are:
@@ -71,16 +81,12 @@ The arguments are:
 -   `sys` the result of the MATLAB `tf()` function
 -   `path` the relative path and filename to be written
 
-The `scripts/` directory should include this Rmd script and the m-file we just made.
-
-    scripts\
-      |-- your_filename.Rmd
-      `-- write_sys.m 
+The `scripts/` directory should include this Rmd script. The `derived/` directory should have the m-file we just made.
 
 test the function
 -----------------
 
-I'll create a transfer function for a first-order system and include the new function call:
+I'll create a transfer function for a first-order system and include the new function call, writing the transfer function to the `results/` directory.
 
 ``` r
 m_script <- "% assign parameters
