@@ -4,8 +4,6 @@ output: html_document
 
 # using R to write a MATLAB function file
 
-Script only. 
-
 ```{r}
 # initialize
 library(knitr)
@@ -41,7 +39,13 @@ function_lines <- "function write_sys(sys, path)
 
 # write to file 
 cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
+```
 
+## testing 
+
+The rest of the script tests the function call. 
+
+```{r}
 # m-file test the function call 
 m_script <- "% assign parameters
 K  = 1;
