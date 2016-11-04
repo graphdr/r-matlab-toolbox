@@ -26,7 +26,6 @@ Packages.
 
 ``` r
 library(readr)
-library(stringr)
 library(reach)
 library(R.matlab)
 ```
@@ -151,7 +150,7 @@ session_info()
      readr       * 1.0.0   2016-08-03 CRAN (R 3.3.1)                         
      rmarkdown     1.1     2016-10-16 CRAN (R 3.3.1)                         
      stringi       1.1.2   2016-10-01 CRAN (R 3.3.1)                         
-     stringr     * 1.1.0   2016-08-19 CRAN (R 3.3.1)                         
+     stringr       1.1.0   2016-08-19 CRAN (R 3.3.1)                         
      tibble        1.2     2016-08-26 CRAN (R 3.3.1)                         
      withr         1.0.2   2016-06-20 CRAN (R 3.3.1)                         
      yaml          2.1.13  2014-06-12 CRAN (R 3.2.1)                         

@@ -28,7 +28,6 @@ Packages.
 
 ```{r echo = TRUE}
 library(readr)
-library(stringr)
 library(reach)
 library(R.matlab)
 ```
