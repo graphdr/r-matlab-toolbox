@@ -1,0 +1,102 @@
+---
+output: html_document
+---
+
+# Creating a Bode plot with MATLAB
+
+```{r echo = FALSE}
+# initialize knitr
+library(knitr)
+opts_knit$set(root.dir = "../")
+opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.keep = 'high', comment = NA)
+```
+
+```{r}
+# load packages
+library(readr)
+library(stringr)
+library(reach)
+library(R.matlab)
+```
+
+```{r eval = FALSE}
+# only when necessary, run this code chunk manually
+# to add project folders to the MATLAB search path
+add_to_path <- "pathstr = [cd];
+  addpath(genpath(pathstr), '-end');
+  savepath;"
+reach::runMatlabCommand(add_to_path)
+```
+
+```{r}
+# MATLAB commands for a bode plot
+m_script <- "% assign parameters
+K  = 5;
+wn = 10;
+z  = 0.05;
+
+% create the transfer function
+n = K;
+d = [1/wn^2  2*z/wn  1];
+sys = tf(n, d);
+
+% compute and plot the frequency response
+bode(sys)
+grid
+
+% break
+
+% write sys to txt
+fid = fopen('results/sys_tf.txt', 'w');
+tfString = evalc('sys');
+fprintf(fid, '%s', tfString);
+fclose(fid);
+
+% write gcf to png
+fig = gcf;
+fig.PaperUnits    = 'inches';
+fig.PaperPosition = [0 0 4 4];
+saveas(fig, 'results/m01_bode.png');
+"
+
+# execute the m-file for first run or if changed
+saveRDS(m_script, "derived/new.rds")
+if (!file.exists("derived/old.rds")) {
+	saveRDS(" ", "derived/old.rds")
+}
+newrds <- readRDS("derived/new.rds")
+oldrds <- readRDS("derived/old.rds")
+if (!identical(oldrds, newrds)) {
+	saveRDS(m_script, "derived/old.rds")
+  runMatlabCommand(m_script, verbose = FALSE, do_quit = TRUE)
+  Sys.sleep(12)
+}
+```
+
+Given an underdamped second-order system with gain *K*, natural frequency $\omega_n$, and damping ratio $\zeta$, the Bode plot for the system is created using the following MATLAB script.
+
+```{r}
+code_for_students <- str_split(m_script, "% break", n = 2)[[1]][1]
+cat(code_for_students)
+```
+The system transfer function is given by
+
+```{r}
+sys <- read_lines('results/sys_tf.txt', skip = 3, n_max = 3)
+# cat(sys, sep = "\n")
+
+# trim spaces and isolate the numerator and denominator
+Gs  <- str_trim(sys)
+num <- Gs[1]
+den <- Gs[3]
+```
+
+$$
+G(s) = \frac{`r num`}{`r den`}.
+$$
+
+The frequency response plot:
+
+```{r}
+knitr::include_graphics('../results/m01_bode.png')
+```
