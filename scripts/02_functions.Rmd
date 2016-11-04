@@ -116,17 +116,21 @@ write_sys(sys, 'results/sys02.txt')
 "
 ```
 
-Then execute the m-file: 
+Then execute the m-file. 
 
 ```{r eval = FALSE}
+# run the m-file
 reach::runMatlabCommand(m_script)
 Sys.sleep(12)
 ```
 
-Read the text file produced by the function and print it. 
+Examine the results. 
 
 ```{r}
+# read the lines saved by the function 
 sys <- read_lines('results/sys02.txt', skip = 3, n_max = 3)
+
+# print to the document
 cat(sys, sep = "\n")
 ```
 

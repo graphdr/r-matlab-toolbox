@@ -52,7 +52,7 @@ n = K;
 d = [1/wb  1];
 sys = tf(n, d);
 
-% write sys to txt
+% use the new function
 write_sys(sys, 'results/sys02.txt')
 "
 
@@ -60,8 +60,10 @@ write_sys(sys, 'results/sys02.txt')
 reach::runMatlabCommand(m_script)
 Sys.sleep(12)
 
-# raed and print the transfer function  
+# read the lines saved by the function 
 sys <- read_lines('results/sys02.txt', skip = 3, n_max = 3)
+
+# print to the document
 cat(sys, sep = "\n")
 ```
 
