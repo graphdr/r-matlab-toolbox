@@ -23,6 +23,8 @@ I use relative file paths with respect to the RStudio Project working directory.
       |-- scripts\
       `-- project.Rproj
 
+If you want a complete script to execute right now, copy and save [02\_functions\_script.Rmd](02_functions_script.Rmd) as an Rmd script in the `scripts\` directory and knit.
+
 getting started
 ---------------
 

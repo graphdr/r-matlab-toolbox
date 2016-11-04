@@ -24,7 +24,7 @@ project\
 
 I open an Rmd script and save it in the `scripts\` directory. 
 
-- If you want a complete script to execute right now, copy and save [01_bode-handout.Rmd](01_bode-handout.Rmd) as an Rmd script in the `scripts\` directory and knit.
+- If you want a complete script to execute right now, copy and save [01_bode_script.Rmd](01_bode_script.Rmd) as an Rmd script in the `scripts\` directory and knit.
 - If you want to assemble your Rmd script one element at a time, follow the steps below and knit the document after each step to see the output.
  
 In either case, the explanations below describe my rationale for each code chunk in the final script.

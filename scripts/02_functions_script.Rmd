@@ -1,0 +1,67 @@
+---
+output: html_document
+---
+
+# using R to write a MATLAB function file
+
+Script only. 
+
+```{r}
+# initialize
+library(knitr)
+opts_knit$set(root.dir = "../")
+opts_chunk$set(echo = TRUE, comment = NA, message = FALSE, warning = FALSE, collapse = FALSE, fig.keep = 'high')
+```
+
+```{r}
+# packages
+library(readr)
+library(reach)
+library(R.matlab)
+```
+
+```{r echo = TRUE, eval = FALSE}
+# only when necessary, run this code chunk manually
+# to add project folders to the MATLAB search path
+add_to_path <- "pathstr = [cd]; 
+  addpath(genpath(pathstr), '-end'); 
+  savepath;" 
+reach::runMatlabCommand(add_to_path)
+```
+
+```{r}
+# user-defined MATLAB function
+function_lines <- "function write_sys(sys, path)
+  fid = fopen(path, 'wt');
+  tf_string = evalc('sys');
+  fprintf(fid, tf_string);
+  fclose(fid);
+  end
+"
+
+# write to file 
+cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
+
+# m-file test the function call 
+m_script <- "% assign parameters
+K  = 1;
+wb = 0.5;
+
+% create the transfer function 
+n = K;
+d = [1/wb  1];
+sys = tf(n, d);
+
+% write sys to txt
+write_sys(sys, 'results/sys02.txt')
+"
+
+# run the m-file
+reach::runMatlabCommand(m_script)
+Sys.sleep(12)
+
+# raed and print the transfer function  
+sys <- read_lines('results/sys02.txt', skip = 3, n_max = 3)
+cat(sys, sep = "\n")
+```
+
