@@ -62,7 +62,7 @@ This R code chunk contains the MATLAB script, surrounded by a single set of quot
 ``` r
 m_script <- "% assign parameters
 K  = 5;
-wn = 10;
+wn = 10; 
 z  = 0.05;
 
 % create the transfer function 
@@ -101,7 +101,7 @@ Add new lines to the `m_script` string following the `bode(sys)` line, starting 
 m_script <- "% assign parameters
 K  = 5;
 wn = 10;
-z  = 0.05;
+z  = 0.05; 
 
 % create the transfer function 
 n = K;
@@ -149,7 +149,7 @@ The output printed to the document is:
     % assign parameters
     K  = 5;
     wn = 10;
-    z  = 0.05;
+    z  = 0.05; 
 
     % create the transfer function 
     n = K;
