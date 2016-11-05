@@ -1,15 +1,8 @@
 # r-matlab-toolbox
 
-In this toolbox, I'm experimenting with the [`reach`](https://github.com/schmidtchristoph/reach) package to create course materials that include teaching MATLAB syntax and output. 
-
-My goal is to gradually make my course materials more reproducible.  
+In this toolbox, I'm experimenting with the [`reach`](https://github.com/schmidtchristoph/reach) package to create course materials for teaching MATLAB syntax and output. 
 
   
-
-
-
-
-
 ## tools 
 
 - [functions.R](scripts/functions.R) 
