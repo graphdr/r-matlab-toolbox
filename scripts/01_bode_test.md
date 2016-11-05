@@ -247,11 +247,11 @@ session info
      setting  value                       
      version  R version 3.3.1 (2016-06-21)
      system   x86_64, mingw32             
-     ui       RTerm                       
+     ui       RStudio (0.99.902)          
      language (EN)                        
      collate  English_United States.1252  
      tz       America/New_York            
-     date     2016-11-04                  
+     date     2016-11-05                  
 
      package     * version date       source                                 
      assertthat    0.1     2013-12-06 CRAN (R 3.2.1)                         
@@ -270,7 +270,8 @@ session info
      Rcpp          0.12.7  2016-09-05 CRAN (R 3.3.1)                         
      reach       * 0.3.0   2015-10-17 Github (schmidtchristoph/reach@f503d44)
      readr       * 1.0.0   2016-08-03 CRAN (R 3.3.1)                         
-     rmarkdown     1.1     2016-10-16 CRAN (R 3.3.1)                         
+     rmarkdown   * 1.1     2016-10-16 CRAN (R 3.3.1)                         
+     rsconnect     0.4.3   2016-05-02 CRAN (R 3.3.0)                         
      stringi       1.1.2   2016-10-01 CRAN (R 3.3.1)                         
      stringr     * 1.1.0   2016-08-19 CRAN (R 3.3.1)                         
      tibble        1.2     2016-08-26 CRAN (R 3.3.1)                         

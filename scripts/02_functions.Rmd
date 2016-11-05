@@ -118,7 +118,7 @@ write_sys(sys, 'results/sys02.txt')
 
 Then execute the m-file. 
 
-```{r eval = FALSE}
+```{r}
 # run the m-file
 reach::runMatlabCommand(m_script)
 Sys.sleep(12)

@@ -1,0 +1,9 @@
+
+sys =
+ 
+     1
+  -------
+  2 s + 1
+ 
+Continuous-time transfer function.
+

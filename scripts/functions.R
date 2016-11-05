@@ -1,6 +1,8 @@
-# functions used in the r-matlab-toolbox
+# r-matlab-toolbox functions
 
-# R functions
+###
+### R functions
+###
 
 # add project directories to the MATLAB search path
 set_path <- function(...) {
@@ -27,7 +29,7 @@ run_mfile <- function(m_script) {
   }
 }
 
-# print m-file lines
+# print lines from an m-file
 print_mfile <- function(m_script) {
   library(stringr)
   if (str_detect(m_script, "% print_stop")) {
@@ -45,11 +47,11 @@ print_sys <- function(filepath) {
   cat(sys, sep = "\n")
 }
 
+###
+### write MATLAB functions
+###
 
-
-# R scripts that write MATLAB function m-files
-
-# create write_sys.m
+# write_sys.m
 function_lines <- "
   function write_sys(sys, filepath)
     fid = fopen(filepath, 'wt');
@@ -60,9 +62,7 @@ function_lines <- "
   "
 cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
 
-
-
-# create write_gcf.m
+# write_gcf.m
 function_lines <- "
   function write_gcf(gcf, filepath, width, height)
     fig = gcf;
@@ -72,7 +72,5 @@ function_lines <- "
   end
   "
 cat(function_lines, file = 'derived/write_gcf.m', sep = '\n', append = FALSE)
-
-
 
 
