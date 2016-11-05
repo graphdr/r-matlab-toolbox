@@ -71,13 +71,37 @@ Finally, print the code I want students to see, the transfer function, and the B
 ``` r
 # print the m-file up to the line % print_stop
 print_mfile(m_script)
+```
 
+    % assign parameters
+    K  = 1;
+    wn = 100;
+    z  = 0.5;
+
+    % create the transfer function
+    n = K;
+    d = [1/wn^2  2*z/wn  1];
+    sys = tf(n, d);
+
+    % compute and plot the unit step response
+    step(sys)
+    grid
+
+``` r
 # print the sys tfansfer function from tf()
 print_sys('results/sys_tf.txt')
+```
 
+                 1
+      -----------------------
+      0.0001 s^2 + 0.01 s + 1
+
+``` r
 # print the graph
 knitr::include_graphics('../results/m04_step.png')
 ```
+
+<img src="../results/m04_step.png" width="900" />
 
 ------------------------------------------------------------------------
 
