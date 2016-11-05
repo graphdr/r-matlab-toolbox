@@ -73,7 +73,7 @@ sys = tf(n, d);
 % compute and plot the frequency response
 bode(sys)
 grid
-"
+"# end m-file
 ```
 
 To run the script in MATLAB:
@@ -125,7 +125,7 @@ fig = gcf;
 fig.PaperUnits    = 'inches';
 fig.PaperPosition = [0 0 4 4];
 saveas(fig, 'results/m01_bode.png');
-"
+"# end m-file
 ```
 
 After knitting the document, the results directory has two files.
@@ -211,7 +211,7 @@ The frequency response graph is obtained by reading the PNG file. Note that beca
 knitr::include_graphics('../results/m01_bode.png')
 ```
 
-<img src="../results/m01_bode.png" width="900" />
+<img src="../results/m01_bode.png" width="600" />
 
 speeding up the run time
 ------------------------
@@ -247,7 +247,7 @@ session info
      setting  value                       
      version  R version 3.3.1 (2016-06-21)
      system   x86_64, mingw32             
-     ui       RStudio (0.99.902)          
+     ui       RTerm                       
      language (EN)                        
      collate  English_United States.1252  
      tz       America/New_York            
@@ -270,9 +270,7 @@ session info
      Rcpp          0.12.7  2016-09-05 CRAN (R 3.3.1)                         
      reach       * 0.3.0   2015-10-17 Github (schmidtchristoph/reach@f503d44)
      readr       * 1.0.0   2016-08-03 CRAN (R 3.3.1)                         
-     rmarkdown   * 1.1     2016-10-16 CRAN (R 3.3.1)                         
-     rsconnect     0.4.3   2016-05-02 CRAN (R 3.3.0)                         
-     rstudioapi    0.6     2016-06-27 CRAN (R 3.3.1)                         
+     rmarkdown     1.1     2016-10-16 CRAN (R 3.3.1)                         
      stringi       1.1.2   2016-10-01 CRAN (R 3.3.1)                         
      stringr     * 1.1.0   2016-08-19 CRAN (R 3.3.1)                         
      tibble        1.2     2016-08-26 CRAN (R 3.3.1)                         

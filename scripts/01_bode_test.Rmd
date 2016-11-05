@@ -79,7 +79,7 @@ sys = tf(n, d);
 % compute and plot the frequency response
 bode(sys)
 grid
-"
+"# end m-file
 ```
 
 To run the script in MATLAB: 
@@ -132,7 +132,7 @@ fig = gcf;
 fig.PaperUnits    = 'inches';
 fig.PaperPosition = [0 0 4 4];
 saveas(fig, 'results/m01_bode.png');
-"
+"# end m-file
 ```
 
 After knitting the document, the results directory has two files.  
