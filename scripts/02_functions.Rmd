@@ -60,8 +60,6 @@ m_script <- "pathstr = [cd];
 reach::runMatlabCommand(m_script)
 ```
 
-
-
 ## write_sys()
 
 My test-case MATLAB function, `write_sys.m`, writes a system transfer function to a text file. The function is based on a code chunk from the exploratory Bode plot tutorial. 

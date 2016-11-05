@@ -6,8 +6,7 @@
 # source('scripts/functions.R')
 # set_path()
 # Sys.sleep(8)
-# set_path()
-# Sys.sleep(8)
+
 
 # package
 library(rmarkdown)

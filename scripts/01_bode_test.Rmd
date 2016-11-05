@@ -56,8 +56,6 @@ reach::runMatlabCommand(m_script)
 
 The header for this code chunk includes the knitr option `eval = FALSE`. If MATLAB indicates a path problem, e.g., `Warning: Name is nonexistent or not  directory...`, then I manually run the code chunk a time or two until the path message clears up. 
 
- 
-
 ## authoring MATLAB code in the R script  
 
 This R code chunk contains the MATLAB script, surrounded by a single set of quotes and assigned to object `m_script`. 

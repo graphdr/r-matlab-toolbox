@@ -1,5 +1,10 @@
 ### R functions
 
+# create directories if not exist
+dir_create <- function(dir) {
+  lapply(dir, function(x) {if (!dir.exists(x)) {dir.create(x)}})
+}
+
 # add project directories to the MATLAB search path
 set_path <- function(...) {
   library(reach)
@@ -12,6 +17,7 @@ set_path <- function(...) {
 # execute the m-file for first run or if changed
 run_mfile <- function(m_script, prefix) {
   library(reach)
+	dir_create("derived")
 	old_path <- paste0("derived/", prefix, "-old.rds")
 	new_path <- paste0("derived/", prefix, "-new.rds")
   saveRDS(m_script, new_path)
@@ -61,6 +67,7 @@ function write_sys(sys, filepath)
   fclose(fid);
 end
 "
+dir_create("derived")
 make_m_file(function_lines, 'derived/write_sys.m')
 
 # write_gcf.m
@@ -72,6 +79,7 @@ function write_gcf(gcf, filepath, width, height)
   saveas(fig, filepath);
 end
 "
+dir_create("derived")
 make_m_file(function_lines, 'derived/write_gcf.m')
 
 
