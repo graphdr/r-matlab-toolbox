@@ -29,20 +29,20 @@ run_mfile <- function(m_script) {
 
 # print m-file lines
 print_mfile <- function(m_script) {
-	library(stringr)
-	if (str_detect(m_script, "% print_stop")) {
-		code_for_students <- str_split(m_script, "% print_stop", n = 2)[[1]][1]
-	} else {
-		code_for_students <- m_script
+  library(stringr)
+  if (str_detect(m_script, "% print_stop")) {
+    code_for_students <- str_split(m_script, "% print_stop", n = 2)[[1]][1]
+  } else {
+    code_for_students <- m_script
   }
-	cat(code_for_students)
+    cat(code_for_students)
 }
 
 # print sys output from tf()
 print_sys <- function(filepath) {
-	library(readr)
-	sys <- read_lines(filepath, skip = 3, n_max = 3)
-	cat(sys, sep = "\n")
+  library(readr)
+  sys <- read_lines(filepath, skip = 3, n_max = 3)
+  cat(sys, sep = "\n")
 }
 
 
@@ -58,10 +58,7 @@ function_lines <- "
     fclose(fid);
   end
   "
-cat(function_lines
-  , file = 'derived/write_sys.m'
-  , sep = '\n'
-  , append = FALSE)
+cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
 
 
 
@@ -74,10 +71,7 @@ function_lines <- "
     saveas(fig, filepath);
   end
   "
-cat(function_lines
-	, file = 'derived/write_gcf.m'
-	, sep = '\n'
-	, append = FALSE)
+cat(function_lines, file = 'derived/write_gcf.m', sep = '\n', append = FALSE)
 
 
 
