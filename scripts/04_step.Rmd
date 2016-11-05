@@ -18,7 +18,7 @@ project\
 
 Create an Rmd script in `scripts/`. Initialize knitr. 
 
-```{r 04-01, echo = TRUE}
+```{r, 04-01, echo = TRUE}
 library(knitr)
 opts_knit$set(root.dir = "../")
 opts_chunk$set(echo = TRUE, comment = NA, message = FALSE)
@@ -55,8 +55,9 @@ grid
 
 % print_stop 
 
+
 % save results
-write_sys(sys, 'results/sys_tf.txt')
+write_sys(sys, 'results/sys04.txt')
 write_gcf(gcf, 'results/m04_step.png', 6, 4)
 "# end m-file
 ```
@@ -81,7 +82,7 @@ Finally, print the code I want students to see,  the transfer function,  and the
 print_mfile(m_script)
 
 # print the sys tfansfer function from tf()
-print_sys('results/sys_tf.txt')
+print_sys('results/sys04.txt')
 
 # print the graph
 knitr::include_graphics('../results/m04_step.png')

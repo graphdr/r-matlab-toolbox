@@ -88,7 +88,7 @@ writing MATLAB output to file
 Add new lines to the `m_script` string following the `bode(sys)` line, starting with comment `% break`.
 
 -   Lines above the break comment will be printed in the output document (code I want students to see and use); lines below are not.
--   the `% write sys to txt` chunk saves the transfer function `sys` to `'results/sys_tf.txt'`
+-   the `% write sys to txt` chunk saves the transfer function `sys` to `'results/sys01.txt'`
 -   the `% write gcf to png` chunk saves the graph to `'results/m01_bode.png'`
 
 ``` r
@@ -144,20 +144,6 @@ cat(code_for_students)
 ```
 
 The output printed to the document is:
-
-    % assign parameters
-    K  = 5;
-    wn = 10;
-    z  = 0.05; 
-
-    % create the transfer function 
-    n = K;
-    d = [1/wn^2  2*z/wn  1];
-    sys = tf(n, d);
-
-    % compute and plot the frequency response
-    bode(sys)
-    grid
 
 pause before reading
 --------------------
@@ -266,7 +252,6 @@ session info
      R.methodsS3   1.7.1   2016-02-16 CRAN (R 3.2.3)                         
      R.oo          1.20.0  2016-02-17 CRAN (R 3.2.3)                         
      R.utils       2.4.0   2016-09-14 CRAN (R 3.3.1)                         
-     R6            2.2.0   2016-10-05 CRAN (R 3.3.1)                         
      Rcpp          0.12.7  2016-09-05 CRAN (R 3.3.1)                         
      reach       * 0.3.0   2015-10-17 Github (schmidtchristoph/reach@f503d44)
      readr       * 1.0.0   2016-08-03 CRAN (R 3.3.1)                         

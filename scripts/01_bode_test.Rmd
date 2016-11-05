@@ -30,15 +30,15 @@ I open an Rmd script and save it in the `scripts\` directory.
 
 I set the `knitr` working directory to match the project working directory. 
 
-```{r echo = 1:2}
+```{r 01-01, echo = 1:2}
 library(knitr)
 opts_knit$set(root.dir = "../")
-opts_chunk$set(echo = FALSE, comment = NA, message = FALSE, warning = FALSE, collapse = FALSE, fig.keep = 'high')
+opts_chunk$set(echo = FALSE, comment = NA, message = FALSE)
 ```
 
 Load the packages. 
 
-```{r echo = TRUE}
+```{r 01-02, echo = TRUE}
 library(readr)
 library(stringr)
 library(reach)
@@ -47,7 +47,7 @@ library(R.matlab)
 
 The string variable `add_to_path` (below) contains the MATLAB commands to add the project folders to the MATLAB search path.
 
-```{r echo = TRUE, eval = FALSE}
+```{r 01-03, echo = TRUE, eval = FALSE}
 m_script <- "pathstr = [cd]; 
   addpath(genpath(pathstr), '-end'); 
   savepath;" 
@@ -62,7 +62,7 @@ The header for this code chunk includes the knitr option `eval = FALSE`. If MATL
 
 This R code chunk contains the MATLAB script, surrounded by a single set of quotes and assigned to object `m_script`. 
 
-```{r echo = TRUE}
+```{r 01-04, echo = TRUE}
 m_script <- "% assign parameters
 K  = 5;
 wn = 10; 
@@ -81,7 +81,7 @@ grid
 
 To run the script in MATLAB: 
 
-```{r echo = TRUE, eval = FALSE}
+```{r 01-05, echo = TRUE, eval = FALSE}
 reach::runMatlabCommand(m_script)
 Sys.sleep(0)
 ```
@@ -97,10 +97,10 @@ Next we add some housekeeping code to be able to save the MATLAB output.
 Add new lines to the `m_script` string following the `bode(sys)` line, starting with comment `% break`. 
 
 - Lines above the break comment will be printed in the output document (code I want students to see and use); lines below are not. 
-- the `% write sys to txt` chunk saves the transfer function `sys` to `'results/sys_tf.txt'` 
+- the `% write sys to txt` chunk saves the transfer function `sys` to `'results/sys01.txt'` 
 - the `% write gcf to png` chunk saves the graph to `'results/m01_bode.png'` 
 
-```{r echo = TRUE}
+```{r 01-06, echo = TRUE}
 # MATLAB commands for a bode plot
 m_script <- "% assign parameters
 K  = 5;
@@ -140,7 +140,7 @@ results\
   `-- m01_bode.png
 ```
 
-```{r eval = TRUE}
+```{r 01-07, eval = TRUE}
 # execute the m-file for first run or if changed 
 saveRDS(m_script, "derived/new.rds")
 if (!file.exists("derived/old.rds")) {
@@ -161,7 +161,7 @@ if (!identical(oldrds, newrds)) {
 
 I use `str_split()` from the `stringr` package to separate the MATLAB commands at the `% print_stop` comment and print the upper half of the code to the output document for student use. 
 
-```{r echo = TRUE, results='hide'}
+```{r 01-08, echo = TRUE, results='hide'}
 if (str_detect(m_script, "% print_stop")) {
   code_for_students <- str_split(m_script, "% print_stop", n = 2)[[1]][1]
 } else {
@@ -172,7 +172,7 @@ cat(code_for_students)
 
 The output printed to the document is:  
 
-```{r}
+```{r01-09}
 cat(code_for_students)
 ```
 
@@ -184,7 +184,7 @@ Before reading the files from `results\` to place them in the Rmd output documen
 
 The revised code chunk for running MATLAB:
 
-```{r echo = TRUE, eval = FALSE}
+```{r 01-10, echo = TRUE, eval = FALSE}
 reach::runMatlabCommand(m_script)
 Sys.sleep(12)
 ```
@@ -198,14 +198,14 @@ Sys.sleep(12)
 
 Read the MATLAB transfer function expression with `read_lines()` from the `readr` package. Select specific lines and print with `cat()`. 
 
-```{r echo = TRUE}
+```{r 01-11, echo = TRUE}
 sys <- read_lines('results/sys01.txt', skip = 3, n_max = 3)
 cat(sys, sep = "\n")
 ```
 
 Or I can get fancy and  pretty-print the transfer function,  
 
-```{r echo = TRUE}
+```{r 01-12, echo = TRUE}
 # trim spaces and isolate the numerator and denominator 
 Gs  <- str_trim(sys)
 num <- Gs[1]
@@ -226,7 +226,7 @@ Sadly, this syntax does not render properly when the R Markdown output format is
 
 The frequency response graph is obtained by reading the PNG file. Note that because `include_graphics()`  does not honor the  `root.dir = "../"` option set earlier, the path to the file name has to go up one level before finding the `results` directory. 
 
-```{r echo = TRUE}
+```{r 01-13, echo = TRUE}
 knitr::include_graphics('../results/m01_bode.png')
 ```
 
@@ -240,7 +240,7 @@ This code chunk runs the MATLAB script for the first pass or if the MATLAB code 
 
 The `Sys.sleep(0)` function allows R to temporarily be given very low priority and hence not to interfere with more important foreground tasks. A typical use is to allow a process launched from R to set itself up and read its input files before R execution is resumed.
 
-```{r eval = FALSE, echo = TRUE}
+```{r 01-14, eval = FALSE, echo = TRUE}
 # save current version of m-script
 saveRDS(m_script, "derived/new.rds")
 
@@ -261,7 +261,7 @@ if (!identical(oldrds, newrds)) {
 
 ## session info
 
-```{r}
+```{r 01-15}
 library(devtools)
 session_info()
 ```

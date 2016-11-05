@@ -52,8 +52,9 @@ grid
 
 % print_stop 
 
+
 % save results
-write_sys(sys, 'results/sys_tf.txt')
+write_sys(sys, 'results/sys04.txt')
 write_gcf(gcf, 'results/m04_step.png', 6, 4)
 "# end m-file
 ```
@@ -95,7 +96,7 @@ print_mfile(m_script)
 
 ``` r
 # print the sys tfansfer function from tf()
-print_sys('results/sys_tf.txt')
+print_sys('results/sys04.txt')
 ```
 
                  1

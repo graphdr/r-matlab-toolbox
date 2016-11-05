@@ -54,28 +54,22 @@ reach::runMatlabCommand(m_script)
 write\_sys()
 ------------
 
-My test-case MATLAB function, `write_sys.m`, writes a system transfer function to a text file. The function is based on the following code chunk from the Bode plot tutorial:
-
-    % write sys to txt
-    fid = fopen('results/sys_tf.txt', 'w');
-    tfString = evalc('sys');
-    fprintf(fid, '%s', tfString);
-    fclose(fid);
+My test-case MATLAB function, `write_sys.m`, writes a system transfer function to a text file. The function is based on a code chunk from the exploratory Bode plot tutorial.
 
 I formulate formulate these lines as a MATLAB function in a string in the Rmd script. Use `cat()` to write the lines to a text file with a `.m` suffix in the `derived/` directory.
 
 ``` r
-# user-defined MATLAB function
+# write_sys.m
 function_lines <- "
-  function write_sys(sys, filepath)
-    fid = fopen(filepath, 'wt');
-    sys_string = evalc('sys');
-    fprintf(fid, sys_string);
-    fclose(fid);
-  end
-  "
-# write to file 
-cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
+function write_sys(sys, filepath)
+  fid = fopen(filepath, 'wt');
+  sys_string = evalc('sys');
+  fprintf(fid, sys_string);
+  fclose(fid);
+end
+"# end lines
+cat(function_lines, file = 'derived/write_sys.m',
+    sep = '\n', append = FALSE)
 ```
 
 The arguments are:
@@ -158,7 +152,6 @@ session_info()
      R.methodsS3   1.7.1   2016-02-16 CRAN (R 3.2.3)                         
      R.oo          1.20.0  2016-02-17 CRAN (R 3.2.3)                         
      R.utils       2.4.0   2016-09-14 CRAN (R 3.3.1)                         
-     R6            2.2.0   2016-10-05 CRAN (R 3.3.1)                         
      Rcpp          0.12.7  2016-09-05 CRAN (R 3.3.1)                         
      reach       * 0.3.0   2015-10-17 Github (schmidtchristoph/reach@f503d44)
      readr       * 1.0.0   2016-08-03 CRAN (R 3.3.1)                         

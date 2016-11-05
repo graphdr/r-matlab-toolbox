@@ -36,7 +36,7 @@ project\
 
 Create an Rmd script and save it to the `scripts/` directory. 
 
-```{r echo = 1:2}
+```{r 02-01, echo = 1:2}
 library(knitr)
 opts_knit$set(root.dir = "../")
 opts_chunk$set(echo = TRUE, comment = NA, message = FALSE, warning = FALSE, collapse = FALSE, fig.keep = 'high')
@@ -44,7 +44,7 @@ opts_chunk$set(echo = TRUE, comment = NA, message = FALSE, warning = FALSE, coll
 
 Packages. 
 
-```{r echo = TRUE}
+```{r 02-02, echo = TRUE}
 library(readr)
 library(reach)
 library(R.matlab)
@@ -52,7 +52,7 @@ library(R.matlab)
 
 Executed only if a MATLAB issues a path warning.  
 
-```{r echo = TRUE, eval = FALSE}
+```{r 02-03, echo = TRUE, eval = FALSE}
 # set path
 m_script <- "pathstr = [cd]; 
   addpath(genpath(pathstr), '-end'); 
@@ -64,30 +64,22 @@ reach::runMatlabCommand(m_script)
 
 ## write_sys()
 
-My test-case MATLAB function, `write_sys.m`, writes a system transfer function to a text file. The function is based on the following code chunk from the Bode plot tutorial:    
-
-```
-% write sys to txt
-fid = fopen('results/sys_tf.txt', 'w');
-tfString = evalc('sys');
-fprintf(fid, '%s', tfString);
-fclose(fid);
-```
+My test-case MATLAB function, `write_sys.m`, writes a system transfer function to a text file. The function is based on a code chunk from the exploratory Bode plot tutorial. 
 
 I formulate formulate these lines as a MATLAB function in a string in the Rmd script.  Use `cat()` to write the lines to a text file with a `.m` suffix in the `derived/` directory. 
 
-```{r}
-# user-defined MATLAB function
+```{r 02-04}
+# write_sys.m
 function_lines <- "
-  function write_sys(sys, filepath)
-    fid = fopen(filepath, 'wt');
-    sys_string = evalc('sys');
-    fprintf(fid, sys_string);
-    fclose(fid);
-  end
-  "
-# write to file 
-cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
+function write_sys(sys, filepath)
+  fid = fopen(filepath, 'wt');
+  sys_string = evalc('sys');
+  fprintf(fid, sys_string);
+  fclose(fid);
+end
+"# end lines
+cat(function_lines, file = 'derived/write_sys.m',
+	sep = '\n', append = FALSE)
 ```
 
 The arguments are: 
@@ -103,7 +95,7 @@ The `scripts/` directory should include this Rmd script. The `derived/` director
 
 I'll create a transfer function for a first-order system and include the new  function call, writing the transfer function to the `results/` directory. 
 
-```{r}
+```{r 02-05}
 m_script <- "% assign parameters
 K  = 1;
 wb = 0.5;
@@ -120,7 +112,7 @@ write_sys(sys, 'results/sys02.txt')
 
 Then execute the m-file. 
 
-```{r}
+```{r 02-06}
 # run the m-file
 reach::runMatlabCommand(m_script)
 Sys.sleep(12)
@@ -128,7 +120,7 @@ Sys.sleep(12)
 
 Examine the results. 
 
-```{r}
+```{r 02-07}
 # read the lines saved by the function 
 sys <- read_lines('results/sys02.txt', skip = 3, n_max = 3)
 
@@ -140,7 +132,7 @@ cat(sys, sep = "\n")
 
 ## session info
 
-```{r}
+```{r 02-08}
 library(devtools)
 session_info()
 ```

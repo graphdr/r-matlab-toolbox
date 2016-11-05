@@ -56,7 +56,7 @@ grid
 % print_stop 
 
 % save results
-write_sys(sys, 'results/sys_tf.txt')
+write_sys(sys, 'results/sys03.txt')
 write_gcf(gcf, 'results/m03_bode.png', 6, 6)
 "# end m-file
 ```
@@ -81,7 +81,7 @@ Finally, print the code I want students to see,  the transfer function,  and the
 print_mfile(m_script)
 
 # print the sys tfansfer function from tf()
-print_sys('results/sys_tf.txt')
+print_sys('results/sys03.txt')
 
 # print the graph
 knitr::include_graphics('../results/m03_bode.png')
@@ -90,7 +90,7 @@ knitr::include_graphics('../results/m03_bode.png')
 
 ## session info
 
-```{r}
+```{r 03-06}
 library(devtools)
 session_info()
 ```

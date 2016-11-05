@@ -3,6 +3,13 @@
 # compile them using uses rmarkdown::render()
 # not as good as a makefile but does the job
 
+
+source('scripts/functions.R')
+set_path()
+Sys.sleep(7)
+set_path()
+Sys.sleep(7)
+
 # package
 library(rmarkdown)
 
