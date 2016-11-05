@@ -41,7 +41,7 @@ write_sys(sys, 'results/sys_tf.txt')
 write_gcf(gcf, 'results/m01_bode.png', 6, 6)
 "# end m-file
 
-run_mfile(m_script)
+run_mfile(m_script, "m03")
 ```
 
 ## results
