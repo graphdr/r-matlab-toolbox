@@ -1,0 +1,9 @@
+
+sys =
+ 
+             1
+  -----------------------
+  0.0001 s^2 + 0.01 s + 1
+ 
+Continuous-time transfer function.
+

@@ -2,10 +2,6 @@
 output: html_document
 ---
 
-# step plot
-
-## initialize
-
 ```{r echo = TRUE}
 library(knitr)
 opts_knit$set(root.dir = "../")
@@ -16,10 +12,7 @@ opts_chunk$set(echo = TRUE, comment = NA, message = FALSE)
 source('scripts/functions.R')
 ```
 
-## m-file
-
 ```{r}
-# step-response m-file
 m_script <- "% assign parameters
 K  = 1;
 wn = 100;
@@ -34,26 +27,19 @@ sys = tf(n, d);
 step(sys)
 grid
 
-% print_stop
+% print_stop 
 
 % save results
-write_sys(sys, 'results/sys_nn.txt')
-write_gcf(gcf, 'results/m_nn_step.png', 6, 6)
+write_sys(sys, 'results/template_step.txt')
+write_gcf(gcf, 'results/template_step.png', 6, 6)
 "# end m-file
 
-run_mfile(m_script, "m_nn")
+run_mfile(m_script, "template_step")
 ```
 
-## results
-
 ```{r}
-# print the m-file up to the line % print_stop
 print_mfile(m_script)
-
-# print the sys tfansfer function from tf()
-print_sys('results/sys_nn.txt')
-
-# print the graph
-knitr::include_graphics('../results/m_nn_step.png')
+print_sys('results/template_step.txt')
+knitr::include_graphics('../results/template_step.png')
 ```
 
