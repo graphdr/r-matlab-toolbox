@@ -55,7 +55,6 @@ grid
 
 % print_stop 
 
-
 % save results
 write_sys(sys, 'results/sys04.txt')
 write_gcf(gcf, 'results/m04_step.png', 6, 4)

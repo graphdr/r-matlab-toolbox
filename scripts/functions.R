@@ -45,6 +45,11 @@ print_sys <- function(filepath) {
   cat(sys, sep = "\n")
 }
 
+# create an m-file
+make_m_file <- function(function_lines, filepath) {
+	cat(function_lines, file = filepath, sep = '\n', append = FALSE)
+}
+
 ### MATLAB functions
 
 # write_sys.m
@@ -55,9 +60,8 @@ function write_sys(sys, filepath)
   fprintf(fid, sys_string);
   fclose(fid);
 end
-"# end lines
-cat(function_lines, file = 'derived/write_sys.m',
-	sep = '\n', append = FALSE)
+"
+make_m_file(function_lines, 'derived/write_sys.m')
 
 # write_gcf.m
 function_lines <- "
@@ -67,8 +71,14 @@ function write_gcf(gcf, filepath, width, height)
   fig.PaperPosition = [0 0 width height];
   saveas(fig, filepath);
 end
-"# end lines
-cat(function_lines, file = 'derived/write_gcf.m',
-	sep = '\n', append = FALSE)
+"
+make_m_file(function_lines, 'derived/write_gcf.m')
+
+
+
+
+
+
+
 
 

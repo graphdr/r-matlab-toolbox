@@ -52,7 +52,6 @@ grid
 
 % print_stop 
 
-
 % save results
 write_sys(sys, 'results/sys04.txt')
 write_gcf(gcf, 'results/m04_step.png', 6, 4)
@@ -128,6 +127,7 @@ session_info()
 
      package     * version date       source                                 
      assertthat    0.1     2013-12-06 CRAN (R 3.2.1)                         
+     codetools     0.2-14  2015-07-15 CRAN (R 3.3.1)                         
      devtools    * 1.12.0  2016-06-24 CRAN (R 3.3.1)                         
      digest        0.6.10  2016-08-02 CRAN (R 3.3.1)                         
      evaluate      0.10    2016-10-11 CRAN (R 3.3.1)                         

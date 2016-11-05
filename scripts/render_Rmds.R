@@ -28,3 +28,8 @@ sapply(Rmd_scripts, function(x) render(x))
 
 # delete html files
 unlink("scripts/*.html")
+
+# extract code only
+# library(knitr)
+# purl(input = "scripts/03_bode.Rmd", output = "scripts/03_bode.R")
+
