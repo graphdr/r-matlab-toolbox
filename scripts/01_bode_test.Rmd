@@ -142,14 +142,14 @@ results\
 
 ```{r 01-07, eval = TRUE}
 # execute the m-file for first run or if changed 
-saveRDS(m_script, "derived/new.rds")
-if (!file.exists("derived/old.rds")) {
-  saveRDS(" ", "derived/old.rds")
+saveRDS(m_script, "derived/m01-new.rds")
+if (!file.exists("derived/m01-old.rds")) {
+  saveRDS(" ", "derived/m01-old.rds")
 }
-newrds <- readRDS("derived/new.rds")
-oldrds <- readRDS("derived/old.rds")
+newrds <- readRDS("derived/m01-new.rds")
+oldrds <- readRDS("derived/m01-old.rds")
 if (!identical(oldrds, newrds)) {
-  saveRDS(m_script, "derived/old.rds")
+  saveRDS(m_script, "derived/m01-old.rds")
   reach::runMatlabCommand(m_script)
   Sys.sleep(12)
 }
@@ -172,7 +172,7 @@ cat(code_for_students)
 
 The output printed to the document is:  
 
-```{r01-09}
+```{r 01-09}
 cat(code_for_students)
 ```
 
@@ -242,18 +242,18 @@ The `Sys.sleep(0)` function allows R to temporarily be given very low priority a
 
 ```{r 01-14, eval = FALSE, echo = TRUE}
 # save current version of m-script
-saveRDS(m_script, "derived/new.rds")
+saveRDS(m_script, "derived/m01-new.rds")
 
 # create an empty RDS on the first pass
-if (!file.exists("derived/old.rds")) {
-	saveRDS(" ", "derived/old.rds")
+if (!file.exists("derived/m01-old.rds")) {
+	saveRDS(" ", "derived/m01-old.rds")
 }
 
 # run MATLAB if old and new differ
-newrds <- readRDS("derived/new.rds")
-oldrds <- readRDS("derived/old.rds")
+newrds <- readRDS("derived/m01-new.rds")
+oldrds <- readRDS("derived/m01-old.rds")
 if (!identical(oldrds, newrds)) {
-	saveRDS(m_script, "derived/old.rds")
+	saveRDS(m_script, "derived/m01-old.rds")
   runMatlabCommand(m_script)
   Sys.sleep(12)
 }

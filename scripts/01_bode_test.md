@@ -145,6 +145,20 @@ cat(code_for_students)
 
 The output printed to the document is:
 
+    % assign parameters
+    K  = 5;
+    wn = 10;
+    z  = 0.05; 
+
+    % create the transfer function 
+    n = K;
+    d = [1/wn^2  2*z/wn  1];
+    sys = tf(n, d);
+
+    % compute and plot the frequency response
+    bode(sys)
+    grid
+
 pause before reading
 --------------------
 
@@ -209,18 +223,18 @@ The `Sys.sleep(0)` function allows R to temporarily be given very low priority a
 
 ``` r
 # save current version of m-script
-saveRDS(m_script, "derived/new.rds")
+saveRDS(m_script, "derived/m01-new.rds")
 
 # create an empty RDS on the first pass
-if (!file.exists("derived/old.rds")) {
-    saveRDS(" ", "derived/old.rds")
+if (!file.exists("derived/m01-old.rds")) {
+    saveRDS(" ", "derived/m01-old.rds")
 }
 
 # run MATLAB if old and new differ
-newrds <- readRDS("derived/new.rds")
-oldrds <- readRDS("derived/old.rds")
+newrds <- readRDS("derived/m01-new.rds")
+oldrds <- readRDS("derived/m01-old.rds")
 if (!identical(oldrds, newrds)) {
-    saveRDS(m_script, "derived/old.rds")
+    saveRDS(m_script, "derived/m01-old.rds")
   runMatlabCommand(m_script)
   Sys.sleep(12)
 }

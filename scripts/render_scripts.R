@@ -4,11 +4,11 @@
 # not as good as a makefile but does the job
 
 
-source('scripts/functions.R')
-set_path()
-Sys.sleep(7)
-set_path()
-Sys.sleep(7)
+# source('scripts/functions.R')
+# set_path()
+# Sys.sleep(8)
+# set_path()
+# Sys.sleep(8)
 
 # package
 library(rmarkdown)

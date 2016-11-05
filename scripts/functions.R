@@ -10,16 +10,18 @@ set_path <- function(...) {
 }
 
 # execute the m-file for first run or if changed
-run_mfile <- function(m_script) {
+run_mfile <- function(m_script, prefix) {
   library(reach)
-  saveRDS(m_script, "derived/new.rds")
-  if (!file.exists("derived/old.rds")) {
-    saveRDS(" ", "derived/old.rds")
+	old_path <- paste0("derived/", prefix, "-old.rds")
+	new_path <- paste0("derived/", prefix, "-new.rds")
+  saveRDS(m_script, new_path)
+  if (!file.exists(old_path)) {
+    saveRDS(" ", old_path)
   }
-  newrds <- readRDS("derived/new.rds")
-  oldrds <- readRDS("derived/old.rds")
+  newrds <- readRDS(new_path)
+  oldrds <- readRDS(old_path)
   if (!identical(oldrds, newrds)) {
-    saveRDS(m_script, "derived/old.rds")
+    saveRDS(m_script, old_path)
     reach::runMatlabCommand(m_script)
     Sys.sleep(12)
   }

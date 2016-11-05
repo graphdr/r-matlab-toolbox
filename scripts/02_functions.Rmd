@@ -112,7 +112,12 @@ write_sys(sys, 'results/sys02.txt')
 
 Then execute the m-file. 
 
-```{r 02-06}
+```{r 02-06, echo = FALSE}
+source("scripts/functions.R")
+run_mfile(m_script, "m02")
+```
+
+```{r 02-07, eval = FALSE}
 # run the m-file
 reach::runMatlabCommand(m_script)
 Sys.sleep(12)
@@ -120,7 +125,7 @@ Sys.sleep(12)
 
 Examine the results. 
 
-```{r 02-07}
+```{r 02-08}
 # read the lines saved by the function 
 sys <- read_lines('results/sys02.txt', skip = 3, n_max = 3)
 
@@ -132,7 +137,7 @@ cat(sys, sep = "\n")
 
 ## session info
 
-```{r 02-08}
+```{r 02-09}
 library(devtools)
 session_info()
 ```
