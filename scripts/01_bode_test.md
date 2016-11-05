@@ -211,7 +211,7 @@ The frequency response graph is obtained by reading the PNG file. Note that beca
 knitr::include_graphics('../results/m01_bode.png')
 ```
 
-<img src="../results/m01_bode.png" width="600" />
+<img src="../results/m01_bode.png" width="900" />
 
 speeding up the run time
 ------------------------
@@ -272,6 +272,7 @@ session info
      readr       * 1.0.0   2016-08-03 CRAN (R 3.3.1)                         
      rmarkdown   * 1.1     2016-10-16 CRAN (R 3.3.1)                         
      rsconnect     0.4.3   2016-05-02 CRAN (R 3.3.0)                         
+     rstudioapi    0.6     2016-06-27 CRAN (R 3.3.1)                         
      stringi       1.1.2   2016-10-01 CRAN (R 3.3.1)                         
      stringr     * 1.1.0   2016-08-19 CRAN (R 3.3.1)                         
      tibble        1.2     2016-08-26 CRAN (R 3.3.1)                         
