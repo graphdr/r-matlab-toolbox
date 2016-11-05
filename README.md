@@ -6,8 +6,8 @@ In this toolbox, I'm experimenting with the [`reach`](https://github.com/schmidt
 ## tools 
 
 - [functions.R](scripts/functions.R) 
-- [Bode plot](scripts/03_bode.md) [(script only)](scripts/03_bode.txt) 
-- [Step response](scripts/04_step.md) [(script only)](scripts/04_step.txt) 
+- [Bode plot](scripts/03_bode.md) [(template)](scripts/template_bode.Rmd) 
+- [Step response](scripts/04_step.md) [(template)](scripts/template_step.Rmd) 
 
 ## explorations 
 
