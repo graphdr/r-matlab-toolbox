@@ -1,6 +1,8 @@
 # r-matlab-toolbox
 
-In this toolbox, I'm experimenting with the [`reach`](https://github.com/schmidtchristoph/reach) package to create reproducible course materials that include MATLAB syntax and output. 
+In this toolbox, I'm experimenting with the [`reach`](https://github.com/schmidtchristoph/reach) package to create course materials that include teaching MATLAB syntax and output. 
+
+My goal is to gradually make my course materials more reproducible.  
 
   
 
@@ -8,16 +10,16 @@ In this toolbox, I'm experimenting with the [`reach`](https://github.com/schmidt
 
 
 
-## use 
+## tools 
 
 - [functions.R](scripts/functions.R) 
 - [Bode plot](scripts/03_bode.md) [(script only)](scripts/03_bode.txt) 
 - [Step response](scripts/04_step.md) [(script only)](scripts/04_step.txt) 
 
-## explore 
+## explorations 
 
-- [Bode plot test case](scripts/01_bode_test.md) 
-- [Writing a function.m file from R](scripts/02_functions.md) 
+- [First test case: Bode plot](scripts/01_bode_test.md) 
+- [Using R to write a MATLAB function](scripts/02_functions.md) 
 
 
 
