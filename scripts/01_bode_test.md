@@ -243,8 +243,8 @@ if (!identical(oldrds, newrds)) {
 coda
 ----
 
--   Several of the housekeeping tasks in this script have since been made into functions and saved in [functions.R](%22scripts/functions.R%22).
--   These functions are used in the [revised Bode plot](%22scripts/03_bode.md%22) tutorial.
+-   Several of the housekeeping tasks in this script have since been made into functions and saved in [functions.R](functions.R).
+-   These functions are used in the [revised Bode plot](03_bode.md) tutorial.
 
 session info
 ------------
