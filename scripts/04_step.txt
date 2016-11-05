@@ -37,7 +37,7 @@ grid
 % print_stop
 
 % save results
-write_sys(sys, 'results/sys_tf.txt')
+write_sys(sys, 'results/sys04.txt')
 write_gcf(gcf, 'results/m04_step.png', 6, 6)
 "# end m-file
 
@@ -51,7 +51,7 @@ run_mfile(m_script, "m04")
 print_mfile(m_script)
 
 # print the sys tfansfer function from tf()
-print_sys('results/sys_tf.txt')
+print_sys('results/sys04.txt')
 
 # print the graph
 knitr::include_graphics('../results/m04_step.png')

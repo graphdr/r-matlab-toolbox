@@ -37,8 +37,8 @@ grid
 % print_stop
 
 % save results
-write_sys(sys, 'results/sys_tf.txt')
-write_gcf(gcf, 'results/m01_bode.png', 6, 6)
+write_sys(sys, 'results/sys03.txt')
+write_gcf(gcf, 'results/m03_bode.png', 6, 6)
 "# end m-file
 
 run_mfile(m_script, "m03")
@@ -51,9 +51,9 @@ run_mfile(m_script, "m03")
 print_mfile(m_script)
 
 # print the sys tfansfer function from tf()
-print_sys('results/sys_tf.txt')
+print_sys('results/sys03.txt')
 
 # print the graph
-knitr::include_graphics('../results/m01_bode.png')
+knitr::include_graphics('../results/m03_bode.png')
 ```
 
