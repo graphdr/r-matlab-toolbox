@@ -8,7 +8,8 @@ output: html_document
 # initialize knitr
 library(knitr)
 opts_knit$set(root.dir = "../")
-opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.keep = 'high', comment = NA)
+opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+fig.keep = 'high', comment = NA)
 ```
 
 ```{r}
@@ -73,7 +74,9 @@ if (!identical(oldrds, newrds)) {
 }
 ```
 
-Given an underdamped second-order system with gain *K*, natural frequency $\omega_n$, and damping ratio $\zeta$, the Bode plot for the system is created using the following MATLAB script.
+Given an underdamped second-order system with gain *K*, natural frequency
+$\omega_n$, and damping ratio $\zeta$, the Bode plot for the system is created
+using the following MATLAB script.
 
 ```{r}
 code_for_students <- str_split(m_script, "% break", n = 2)[[1]][1]
