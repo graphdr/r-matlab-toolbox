@@ -1,0 +1,76 @@
+---
+output: github_document
+---
+
+# using R to write a MATLAB function file
+
+## getting started 
+
+```{r echo = TRUE}
+# initialize
+library(knitr)
+opts_knit$set(root.dir = "../")
+opts_chunk$set(echo = TRUE, comment = NA, message = FALSE)
+```
+
+```{r}
+# packages
+library(readr)
+library(reach)
+library(R.matlab)
+```
+
+```{r eval = FALSE}
+# set path, execute if a MATLAB issues a path warning. 
+m_script <- "pathstr = [cd]; 
+  addpath(genpath(pathstr), '-end'); 
+  savepath;" 
+reach::runMatlabCommand(m_script)
+```
+
+## write_sys()
+
+```{r}
+# user-defined MATLAB function
+function_lines <- "
+  function write_sys(sys, filepath)
+    fid = fopen(filepath, 'wt');
+    sys_string = evalc('sys');
+    fprintf(fid, sys_string);
+    fclose(fid);
+  end
+  "# end function 
+# write to file 
+cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
+```
+
+## test the function 
+
+```{r}
+m_script <- "% assign parameters
+K  = 1;
+wb = 0.5;
+
+% create the transfer function 
+n = K;
+d = [1/wb  1];
+sys = tf(n, d);
+
+% write sys to txt
+write_sys(sys, 'results/sys02.txt')
+"# end m-file
+
+reach::runMatlabCommand(m_script)
+Sys.sleep(12)
+```
+
+## results 
+
+```{r}
+# read the lines saved by the function 
+sys <- read_lines('results/sys02.txt', skip = 3, n_max = 3)
+
+# print to the document
+cat(sys, sep = "\n")
+```
+
