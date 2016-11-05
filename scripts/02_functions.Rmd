@@ -28,7 +28,7 @@ project\
   `-- project.Rproj
 ```
 
-If you want a complete script to execute right now, copy and save [02_functions_script.Rmd](02_functions_script.Rmd) as an Rmd script in the `scripts\` directory and knit. 
+
 
 
 
@@ -50,13 +50,14 @@ library(reach)
 library(R.matlab)
 ```
 
-Executed only if a MATLAB path error occurs. 
+Executed only if a MATLAB issues a path warning.  
 
 ```{r echo = TRUE, eval = FALSE}
-add_to_path <- "pathstr = [cd]; 
+# set path
+m_script <- "pathstr = [cd]; 
   addpath(genpath(pathstr), '-end'); 
   savepath;" 
-reach::runMatlabCommand(add_to_path)
+reach::runMatlabCommand(m_script)
 ```
 
 
@@ -77,13 +78,14 @@ I formulate formulate these lines as a MATLAB function in a string in the Rmd sc
 
 ```{r}
 # user-defined MATLAB function
-function_lines <- "function write_sys(sys, path)
-  fid = fopen(path, 'wt');
-  tf_string = evalc('sys');
-  fprintf(fid, tf_string);
-  fclose(fid);
+function_lines <- "
+  function write_sys(sys, filepath)
+    fid = fopen(filepath, 'wt');
+    sys_string = evalc('sys');
+    fprintf(fid, sys_string);
+    fclose(fid);
   end
-"
+  "
 # write to file 
 cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
 ```
@@ -91,7 +93,7 @@ cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
 The arguments are: 
 
 - `sys` the result of the MATLAB `tf()` function 
-- `path` the relative path and filename to be written 
+- `filepath` the relative path and filename to be written 
 
 The `scripts/` directory should include this Rmd script. The `derived/` directory should have the m-file we just made.
 

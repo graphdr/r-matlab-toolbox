@@ -24,7 +24,7 @@ run_mfile <- function(m_script) {
   oldrds <- readRDS("derived/old.rds")
   if (!identical(oldrds, newrds)) {
     saveRDS(m_script, "derived/old.rds")
-    reach::runMatlabCommand(m_script, verbose = FALSE, do_quit = TRUE)
+    reach::runMatlabCommand(m_script)
     Sys.sleep(12)
   }
 }

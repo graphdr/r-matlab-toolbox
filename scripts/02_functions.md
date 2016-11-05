@@ -23,8 +23,6 @@ I use relative file paths with respect to the RStudio Project working directory.
       |-- scripts\
       `-- project.Rproj
 
-If you want a complete script to execute right now, copy and save [02\_functions\_script.Rmd](02_functions_script.Rmd) as an Rmd script in the `scripts\` directory and knit.
-
 getting started
 ---------------
 
@@ -43,13 +41,14 @@ library(reach)
 library(R.matlab)
 ```
 
-Executed only if a MATLAB path error occurs.
+Executed only if a MATLAB issues a path warning.
 
 ``` r
-add_to_path <- "pathstr = [cd]; 
+# set path
+m_script <- "pathstr = [cd]; 
   addpath(genpath(pathstr), '-end'); 
   savepath;" 
-reach::runMatlabCommand(add_to_path)
+reach::runMatlabCommand(m_script)
 ```
 
 write\_sys()
@@ -67,13 +66,14 @@ I formulate formulate these lines as a MATLAB function in a string in the Rmd sc
 
 ``` r
 # user-defined MATLAB function
-function_lines <- "function write_sys(sys, path)
-  fid = fopen(path, 'wt');
-  tf_string = evalc('sys');
-  fprintf(fid, tf_string);
-  fclose(fid);
+function_lines <- "
+  function write_sys(sys, filepath)
+    fid = fopen(filepath, 'wt');
+    sys_string = evalc('sys');
+    fprintf(fid, sys_string);
+    fclose(fid);
   end
-"
+  "
 # write to file 
 cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
 ```
@@ -81,7 +81,7 @@ cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
 The arguments are:
 
 -   `sys` the result of the MATLAB `tf()` function
--   `path` the relative path and filename to be written
+-   `filepath` the relative path and filename to be written
 
 The `scripts/` directory should include this Rmd script. The `derived/` directory should have the m-file we just made.
 
@@ -138,7 +138,7 @@ session_info()
      setting  value                       
      version  R version 3.3.1 (2016-06-21)
      system   x86_64, mingw32             
-     ui       RStudio (0.99.902)          
+     ui       RTerm                       
      language (EN)                        
      collate  English_United States.1252  
      tz       America/New_York            
@@ -153,7 +153,6 @@ session_info()
      knitr       * 1.14.15 2016-11-03 Github (yihui/knitr@56faff4)           
      magrittr      1.5     2014-11-22 CRAN (R 3.2.1)                         
      memoise       1.0.0   2016-01-29 CRAN (R 3.2.3)                         
-     png           0.1-7   2013-12-03 CRAN (R 3.3.0)                         
      R.matlab    * 3.6.1   2016-10-20 CRAN (R 3.3.1)                         
      R.methodsS3   1.7.1   2016-02-16 CRAN (R 3.2.3)                         
      R.oo          1.20.0  2016-02-17 CRAN (R 3.2.3)                         
@@ -161,11 +160,9 @@ session_info()
      Rcpp          0.12.7  2016-09-05 CRAN (R 3.3.1)                         
      reach       * 0.3.0   2015-10-17 Github (schmidtchristoph/reach@f503d44)
      readr       * 1.0.0   2016-08-03 CRAN (R 3.3.1)                         
-     rmarkdown   * 1.1     2016-10-16 CRAN (R 3.3.1)                         
-     rsconnect     0.4.3   2016-05-02 CRAN (R 3.3.0)                         
-     rstudioapi    0.6     2016-06-27 CRAN (R 3.3.1)                         
+     rmarkdown     1.1     2016-10-16 CRAN (R 3.3.1)                         
      stringi       1.1.2   2016-10-01 CRAN (R 3.3.1)                         
-     stringr     * 1.1.0   2016-08-19 CRAN (R 3.3.1)                         
+     stringr       1.1.0   2016-08-19 CRAN (R 3.3.1)                         
      tibble        1.2     2016-08-26 CRAN (R 3.3.1)                         
      withr         1.0.2   2016-06-20 CRAN (R 3.3.1)                         
      yaml          2.1.13  2014-06-12 CRAN (R 3.2.1)                         

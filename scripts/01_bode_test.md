@@ -41,13 +41,13 @@ library(R.matlab)
 The string variable `add_to_path` (below) contains the MATLAB commands to add the project folders to the MATLAB search path.
 
 ``` r
-add_to_path <- "pathstr = [cd]; 
+m_script <- "pathstr = [cd]; 
   addpath(genpath(pathstr), '-end'); 
   savepath;" 
-reach::runMatlabCommand(add_to_path)
+reach::runMatlabCommand(m_script)
 ```
 
-The header for this code chunk includes the knitr option `eval = FALSE`. If MATLAB indicates a path problem, I manually run the code chunk a time or two until the path message clears up.
+The header for this code chunk includes the knitr option `eval = FALSE`. If MATLAB indicates a path problem, e.g., `Warning: Name is nonexistent or not  directory...`, then I manually run the code chunk a time or two until the path message clears up.
 
 authoring MATLAB code in the R script
 -------------------------------------
@@ -107,12 +107,12 @@ sys = tf(n, d);
 bode(sys)
 grid
 
-% break
+% print_stop
 
 % write sys to txt
-fid = fopen('results/sys01.txt', 'w');
-tfString = evalc('sys');
-fprintf(fid, '%s', tfString);
+fid = fopen('results/sys01.txt', 'wt');
+sys_string = evalc('sys');
+fprintf(fid, sys_string);
 fclose(fid);
 
 % write gcf to png
@@ -132,10 +132,14 @@ After knitting the document, the results directory has two files.
 printing the MATLAB code
 ------------------------
 
-I use `str_split()` from the `stringr` package to separate the MATLAB commands at the `% break` line and print the upper half of the code to the output document for student use.
+I use `str_split()` from the `stringr` package to separate the MATLAB commands at the `% print_stop` comment and print the upper half of the code to the output document for student use.
 
 ``` r
-code_for_students <- str_split(m_script, "% break", n = 2)[[1]][1]
+if (str_detect(m_script, "% print_stop")) {
+  code_for_students <- str_split(m_script, "% print_stop", n = 2)[[1]][1]
+} else {
+  code_for_students <- m_script
+}
 cat(code_for_students)
 ```
 
