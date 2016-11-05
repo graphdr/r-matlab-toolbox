@@ -4,6 +4,8 @@ bode plot
 
 Here, I update the bode plot script by placing housekeeping code chunks in `functions.R`, including R code chunks that write MATLAB function m-files.
 
+If you want a complete script to execute right now, copy and save [03\_bode\_script.Rmd](03_bode_script.Rmd) as an Rmd script in the `scripts\` directory and knit.
+
 initialize
 ----------
 

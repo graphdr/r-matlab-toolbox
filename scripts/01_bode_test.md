@@ -19,7 +19,7 @@ I use relative file paths with respect to the RStudio Project working directory.
 
 I open an Rmd script and save it in the `scripts\` directory.
 
--   If you want a complete script to execute right now, copy and save [01\_bode\_script.Rmd](01_bode_script.Rmd) as an Rmd script in the `scripts\` directory and knit.
+-   If you want a complete script to execute right now, copy and save [01\_bode\_test\_script.Rmd](01_bode_test_script.Rmd) as an Rmd script in the `scripts\` directory and knit.
 -   If you want to assemble your Rmd script one element at a time, follow the steps below and knit the document after each step to see the output.
 
 In either case, the explanations below describe my rationale for each code chunk in the final script.
@@ -115,7 +115,7 @@ grid
 % break
 
 % write sys to txt
-fid = fopen('results/sys_tf.txt', 'w');
+fid = fopen('results/sys01.txt', 'w');
 tfString = evalc('sys');
 fprintf(fid, '%s', tfString);
 fclose(fid);
@@ -131,7 +131,7 @@ saveas(fig, 'results/m01_bode.png');
 After knitting the document, the results directory has two files.
 
     results\
-      |-- sys_tf.txt
+      |-- sys01.txt
       `-- m01_bode.png
 
 printing the MATLAB code
@@ -178,7 +178,7 @@ printing the transfer function
 Read the MATLAB transfer function expression with `read_lines()` from the `readr` package. Select specific lines and print with `cat()`.
 
 ``` r
-sys <- read_lines('results/sys_tf.txt', skip = 3, n_max = 3)
+sys <- read_lines('results/sys01.txt', skip = 3, n_max = 3)
 cat(sys, sep = "\n")
 ```
 

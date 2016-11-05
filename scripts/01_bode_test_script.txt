@@ -48,7 +48,7 @@ grid
 % break
 
 % write sys to txt
-fid = fopen('results/sys_tf.txt', 'w');
+fid = fopen('results/sys01.txt', 'w');
 tfString = evalc('sys');
 fprintf(fid, '%s', tfString);
 fclose(fid);
@@ -85,7 +85,7 @@ cat(code_for_students)
 The system transfer function is given by
 
 ```{r}
-sys <- read_lines('results/sys_tf.txt', skip = 3, n_max = 3)
+sys <- read_lines('results/sys01.txt', skip = 3, n_max = 3)
 # cat(sys, sep = "\n")
 
 # trim spaces and isolate the numerator and denominator

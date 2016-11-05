@@ -122,7 +122,7 @@ grid
 % break
 
 % write sys to txt
-fid = fopen('results/sys_tf.txt', 'w');
+fid = fopen('results/sys01.txt', 'w');
 tfString = evalc('sys');
 fprintf(fid, '%s', tfString);
 fclose(fid);
@@ -139,7 +139,7 @@ After knitting the document, the results directory has two files.
 
 ```
 results\
-  |-- sys_tf.txt
+  |-- sys01.txt
   `-- m01_bode.png
 ```
 
@@ -203,7 +203,7 @@ Sys.sleep(12)
 Read the MATLAB transfer function expression with `read_lines()` from the `readr` package. Select specific lines and print with `cat()`. 
 
 ```{r echo = TRUE}
-sys <- read_lines('results/sys_tf.txt', skip = 3, n_max = 3)
+sys <- read_lines('results/sys01.txt', skip = 3, n_max = 3)
 cat(sys, sep = "\n")
 ```
 
