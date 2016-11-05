@@ -1,0 +1,59 @@
+---
+output: github_document
+---
+
+# bode plot
+
+## initialize
+
+```{r echo = TRUE}
+library(knitr)
+opts_knit$set(root.dir = "../")
+opts_chunk$set(echo = TRUE, comment = NA, message = FALSE)
+```
+
+```{r}
+source('scripts/functions.R')
+```
+
+## m-file 
+
+```{r}
+# MATLAB commands for a bode plot
+m_script <- "% assign parameters
+K  = 1;
+wn = 100;
+z  = 0.5;
+
+% create the transfer function
+n = K;
+d = [1/wn^2  2*z/wn  1];
+sys = tf(n, d);
+
+% compute and plot the frequency response
+bode(sys)
+grid
+
+% print_stop 
+
+% save results
+write_sys(sys, 'results/sys_tf.txt')
+write_gcf(gcf, 'results/m01_bode.png', 6, 6)
+"# end m-file
+
+run_mfile(m_script)
+```
+
+## results 
+
+```{r}
+# print the m-file up to the line % print_stop
+print_mfile(m_script)
+
+# print the sys tfansfer function from tf()
+print_sys('results/sys_tf.txt')
+
+# print the graph
+knitr::include_graphics('../results/m01_bode.png')
+```
+
