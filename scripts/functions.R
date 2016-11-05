@@ -1,8 +1,4 @@
-# r-matlab-toolbox functions
-
-###
 ### R functions
-###
 
 # add project directories to the MATLAB search path
 set_path <- function(...) {
@@ -47,30 +43,30 @@ print_sys <- function(filepath) {
   cat(sys, sep = "\n")
 }
 
-###
-### write MATLAB functions
-###
+### MATLAB functions
 
 # write_sys.m
 function_lines <- "
-  function write_sys(sys, filepath)
-    fid = fopen(filepath, 'wt');
-    sys_string = evalc('sys');
-    fprintf(fid, sys_string);
-    fclose(fid);
-  end
-  "
-cat(function_lines, file = 'derived/write_sys.m', sep = '\n', append = FALSE)
+function write_sys(sys, filepath)
+  fid = fopen(filepath, 'wt');
+  sys_string = evalc('sys');
+  fprintf(fid, sys_string);
+  fclose(fid);
+end
+"# end lines
+cat(function_lines, file = 'derived/write_sys.m',
+	sep = '\n', append = FALSE)
 
 # write_gcf.m
 function_lines <- "
-  function write_gcf(gcf, filepath, width, height)
-    fig = gcf;
-    fig.PaperUnits = 'inches';
-    fig.PaperPosition = [0 0 width height];
-    saveas(fig, filepath);
-  end
-  "
-cat(function_lines, file = 'derived/write_gcf.m', sep = '\n', append = FALSE)
+function write_gcf(gcf, filepath, width, height)
+  fig = gcf;
+  fig.PaperUnits = 'inches';
+  fig.PaperPosition = [0 0 width height];
+  saveas(fig, filepath);
+end
+"# end lines
+cat(function_lines, file = 'derived/write_gcf.m',
+	sep = '\n', append = FALSE)
 
 

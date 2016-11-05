@@ -266,6 +266,7 @@ session info
      R.methodsS3   1.7.1   2016-02-16 CRAN (R 3.2.3)                         
      R.oo          1.20.0  2016-02-17 CRAN (R 3.2.3)                         
      R.utils       2.4.0   2016-09-14 CRAN (R 3.3.1)                         
+     R6            2.2.0   2016-10-05 CRAN (R 3.3.1)                         
      Rcpp          0.12.7  2016-09-05 CRAN (R 3.3.1)                         
      reach       * 0.3.0   2015-10-17 Github (schmidtchristoph/reach@f503d44)
      readr       * 1.0.0   2016-08-03 CRAN (R 3.3.1)                         

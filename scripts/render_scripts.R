@@ -19,7 +19,5 @@ Rmd_scripts <- list.files(
 # render each script
 sapply(Rmd_scripts, function(x) render(x))
 
-# warning name is nonexistent or not  directory
-
 # delete html files
 unlink("scripts/*.html")

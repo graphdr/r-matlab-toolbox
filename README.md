@@ -6,6 +6,7 @@ Several of the engineering courses I teach rely on MATLAB as the primary computi
 
 - [functions.R](scripts/functions.R) 
 - [Bode plot](scripts/03_bode.md) [(script only)](scripts/03_bode.txt) 
+- [Step response](scripts/04_step.md) [(script only)](scripts/04_step.txt) 
 
 ## explorations 
 
