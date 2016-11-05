@@ -240,6 +240,12 @@ if (!identical(oldrds, newrds)) {
 }
 ```
 
+coda
+----
+
+-   Several of the housekeeping tasks in this script have since been made into functions and saved in [functions.R](%22scripts/functions.R%22).
+-   These functions are used in the [revised Bode plot](scripts/03_bode.md) tutorial.
+
 session info
 ------------
 
@@ -254,7 +260,6 @@ session info
 
      package     * version date       source                                 
      assertthat    0.1     2013-12-06 CRAN (R 3.2.1)                         
-     codetools     0.2-14  2015-07-15 CRAN (R 3.3.1)                         
      devtools    * 1.12.0  2016-06-24 CRAN (R 3.3.1)                         
      digest        0.6.10  2016-08-02 CRAN (R 3.3.1)                         
      evaluate      0.10    2016-10-11 CRAN (R 3.3.1)                         
@@ -272,7 +277,6 @@ session info
      readr       * 1.0.0   2016-08-03 CRAN (R 3.3.1)                         
      rmarkdown   * 1.1     2016-10-16 CRAN (R 3.3.1)                         
      rsconnect     0.4.3   2016-05-02 CRAN (R 3.3.0)                         
-     rstudioapi    0.6     2016-06-27 CRAN (R 3.3.1)                         
      stringi       1.1.2   2016-10-01 CRAN (R 3.3.1)                         
      stringr     * 1.1.0   2016-08-19 CRAN (R 3.3.1)                         
      tibble        1.2     2016-08-26 CRAN (R 3.3.1)                         

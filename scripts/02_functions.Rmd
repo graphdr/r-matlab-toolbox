@@ -132,6 +132,11 @@ cat(sys, sep = "\n")
 ```
 
 
+## coda
+
+- The final version of the `write_sys()` function is saved in [functions.R]("scripts/functions.R"). 
+- To see the function in use, see the [Bode plot](scripts/03_bode.md) or [step response](scripts/04_step.md) tutorials. 
+
 
 ## session info
 
