@@ -15,6 +15,10 @@ In this toolbox, I'm experimenting with the [`reach`](https://github.com/schmidt
 - [Using R to write a MATLAB function](scripts/02_functions.md) 
 
 
+## references 
+
+1. Christoph Schmidt (2016), *reach*, GitHub repository, https://github.com/schmidtchristoph/reach. 
+
 
 --- 
 [License](LICENSE.md)
