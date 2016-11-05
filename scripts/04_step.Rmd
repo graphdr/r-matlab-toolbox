@@ -88,5 +88,12 @@ knitr::include_graphics('../results/m04_step.png')
 ```
 
 
+## session info
+
+```{r}
+library(devtools)
+session_info()
+```
+
 --- 
 [main page](../README.md)

@@ -57,8 +57,8 @@ grid
 
 % save results
 write_sys(sys, 'results/sys_tf.txt')
-write_gcf(gcf, 'results/m01_bode.png', 6, 6)
-"
+write_gcf(gcf, 'results/m03_bode.png', 6, 6)
+"# end m-file
 ```
 
 Run the m-file. 
@@ -84,9 +84,16 @@ print_mfile(m_script)
 print_sys('results/sys_tf.txt')
 
 # print the graph
-knitr::include_graphics('../results/m01_bode.png')
+knitr::include_graphics('../results/m03_bode.png')
 ```
 
+
+## session info
+
+```{r}
+library(devtools)
+session_info()
+```
 
 --- 
 [main page](../README.md)
