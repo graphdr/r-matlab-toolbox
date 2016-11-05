@@ -125,7 +125,7 @@ coda
 ----
 
 -   The final version of the `write_sys()` function is saved in [functions.R](%22scripts/functions.R%22).
--   To see the function in use, see the [Bode plot](scripts/03_bode.md) or [step response](scripts/04_step.md) tutorials.
+-   To see the function in use, see the [Bode plot](%22scripts/03_bode.md%22) or [step response](%22scripts/04_step.md%22) tutorials.
 
 session info
 ------------

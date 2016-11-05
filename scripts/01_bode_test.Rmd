@@ -260,7 +260,7 @@ if (!identical(oldrds, newrds)) {
 ## coda
 
 - Several of the housekeeping tasks in this script have since been made into functions and saved in [functions.R]("scripts/functions.R"). 
-- These functions are used in the [revised Bode plot](scripts/03_bode.md) tutorial. 
+- These functions are used in the [revised Bode plot]("scripts/03_bode.md") tutorial. 
 
 
 ## session info
