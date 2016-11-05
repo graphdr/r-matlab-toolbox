@@ -2,22 +2,26 @@
 bode plot
 =========
 
-Here, I update the bode plot script by placing housekeeping code chunks in `functions.R`, including R code chunks that write MATLAB function m-files.
+Requires `functions.R` and a directory structure that includes:
 
-If you want a complete script to execute right now, copy and save [03\_bode\_script.Rmd](03_bode_script.Rmd) as an Rmd script in the `scripts\` directory and knit.
+    project\
+      |-- derived\
+      |-- results\
+      |-- scripts\
+      `-- project.Rproj
 
 initialize
 ----------
 
-Initialize knitr.
+Create an Rmd script in `scripts/`. Initialize knitr.
 
 ``` r
 library(knitr)
 opts_knit$set(root.dir = "../")
-opts_chunk$set(echo = TRUE, comment = NA)
+opts_chunk$set(echo = TRUE, comment = NA, message = FALSE)
 ```
 
-`functions.R` both loads my R functions and writes user-defined MATLAB functions to file in the `derived/` directory.
+Sourcing `functions.R` loads my R functions and writes user-defined MATLAB functions to file in the `derived/` directory.
 
 ``` r
 source('scripts/functions.R')
@@ -103,7 +107,7 @@ print_sys('results/sys_tf.txt')
 knitr::include_graphics('../results/m01_bode.png')
 ```
 
-<img src="../results/m01_bode.png" width="900" />
+<img src="../results/m01_bode.png" width="600" />
 
 ------------------------------------------------------------------------
 

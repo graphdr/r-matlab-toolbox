@@ -1,21 +1,27 @@
 
-step plot
-=========
+step response
+=============
 
-Based on the script for the Bode plot but with `step(sys)`.
+Requires `functions.R` and a directory structure that includes:
+
+    project\
+      |-- derived\
+      |-- results\
+      |-- scripts\
+      `-- project.Rproj
 
 initialize
 ----------
 
-Initialize knitr.
+Create an Rmd script in `scripts/`. Initialize knitr.
 
 ``` r
 library(knitr)
 opts_knit$set(root.dir = "../")
-opts_chunk$set(echo = TRUE, comment = NA)
+opts_chunk$set(echo = TRUE, comment = NA, message = FALSE)
 ```
 
-`functions.R` both loads my R functions and writes user-defined MATLAB functions to file in the `derived/` directory.
+Sourcing `functions.R` loads my R functions and writes user-defined MATLAB functions to file in the `derived/` directory.
 
 ``` r
 source('scripts/functions.R')
@@ -49,7 +55,7 @@ grid
 % save results
 write_sys(sys, 'results/sys_tf.txt')
 write_gcf(gcf, 'results/m04_step.png', 6, 4)
-"
+"# end m-file
 ```
 
 Run the m-file.
