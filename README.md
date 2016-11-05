@@ -1,6 +1,8 @@
 # r-matlab-toolbox
 
-In this toolbox, I'm experimenting with the [`reach`](https://github.com/schmidtchristoph/reach) package to create course materials that include MATLAB syntax and output. My goal is to gradually improve the reproducibility of my course source files. 
+In this toolbox, I'm experimenting with the [`reach`](https://github.com/schmidtchristoph/reach) package (by Christoph Schmidt) for R, developing tools to use R Markdown to create course materials that include MATLAB syntax and output. My goal is to gradually improve the reproducibility of my course source files.
+
+I discuss the context and goals of this work in this [blog post](http://www.graphdoctor.com/archives/1216). 
 
   
 ## tools 
