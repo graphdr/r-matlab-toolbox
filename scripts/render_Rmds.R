@@ -3,9 +3,14 @@
 # compile them using uses rmarkdown::render()
 # not as good as a makefile but does the job
 
-# source('scripts/functions.R')
+# once per session
+source('scripts/functions.R')
 # set_path()
 # Sys.sleep(8)
+
+#
+# Warning: MATLAB Toolbox Path Cache is out of date and is not being used.
+# Type 'help toolbox_path_cache' for more info
 
 
 # package

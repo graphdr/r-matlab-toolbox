@@ -37,7 +37,7 @@ The optional comment `% print_stop` separates lines above for printing (code I w
 ``` r
 # MATLAB commands for a bode plot
 m_script <- "% assign parameters
-K  = 1;
+K  = 10;
 wn = 100;
 z  = 0.5;
 
@@ -80,7 +80,7 @@ print_mfile(m_script)
 ```
 
     % assign parameters
-    K  = 1;
+    K  = 10;
     wn = 100;
     z  = 0.5;
 
@@ -98,7 +98,7 @@ print_mfile(m_script)
 print_sys('results/sys03.txt')
 ```
 
-                 1
+                10
       -----------------------
       0.0001 s^2 + 0.01 s + 1
 

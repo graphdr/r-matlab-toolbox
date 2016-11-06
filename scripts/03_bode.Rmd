@@ -40,7 +40,7 @@ The optional comment `% print_stop` separates lines above for printing (code I w
 ```{r 03-03}
 # MATLAB commands for a bode plot
 m_script <- "% assign parameters
-K  = 1;
+K  = 10;
 wn = 100;
 z  = 0.5;
 

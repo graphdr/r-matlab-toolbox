@@ -6,12 +6,25 @@ dir_create <- function(dir) {
 }
 
 # add current working directory to MATLAB search path
+# this version does not use genpath_exclude.m
+# set_path <- function(...) {
+#   library(reach)
+#   m_script <- "pathstr = [cd];
+#     addpath(genpath(pathstr), '-end')
+#     savepath"
+#   reach::runMatlabCommand(m_script)
+# }
+
+# add current working directory to MATLAB search path
+# obtain genpath_exclude() from MATLAB file exchange and save in scripts directory
+# https://www.mathworks.com/matlabcentral/fileexchange/22209-genpath-exclude?s_tid=srchtitle
 set_path <- function(...) {
-  library(reach)
-  m_script <- "pathstr = [cd];
-    addpath(genpath(pathstr), '-end')
-    savepath"
-  reach::runMatlabCommand(m_script)
+	library(reach)
+	m_script <- "addpath(fullfile(cd, 'scripts'), '-end');
+  exclude_directories = {'\\..*', '*\\holding'};
+	addpath(genpath_exclude(cd, exclude_directories), '-end')
+	savepath"
+	reach::runMatlabCommand(m_script, do_quit = TRUE)
 }
 
 # run MATLAB script listed as a string in R
@@ -83,12 +96,6 @@ end
 "
 dir_create("derived")
 make_m_file(function_lines, 'derived/write_gcf.m')
-
-
-
-
-
-
 
 
 

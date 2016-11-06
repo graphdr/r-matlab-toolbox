@@ -38,16 +38,18 @@ library(reach)
 library(R.matlab)
 ```
 
-The string variable `add_to_path` (below) contains the MATLAB commands to add the project folders to the MATLAB search path.
+The string variable `m_script` (below) contains the MATLAB commands to add the project folders to the MATLAB search path.
 
 ``` r
-m_script <- "pathstr = [cd]; 
-  addpath(genpath(pathstr), '-end'); 
-  savepath;" 
+m_script <- "pathstr = cd;
+  addpath(genpath(pathstr), '-end');
+  savepath;"
 reach::runMatlabCommand(m_script)
 ```
 
-The header for this code chunk includes the knitr option `eval = FALSE`. If MATLAB indicates a path problem, e.g., `Warning: Name is nonexistent or not  directory...`, then I manually run the code chunk a time or two until the path message clears up.
+The header for this code chunk includes the knitr option `eval = FALSE`. If MATLAB indicates a path problem, e.g., `Warning: Name is nonexistent or not  directory...`, then I manually run the code chunk.
+
+However, this code chunk adds all directories to the search path, including hidden directories such as `.git/` and `.Rproj.user/`. In later scripts, I show how to set the MATLAB path while excluding the hidden folders (see [`functions.R`](functions.R)).
 
 authoring MATLAB code in the R script
 -------------------------------------
@@ -56,7 +58,7 @@ This R code chunk contains the MATLAB script, surrounded by a single set of quot
 
 ``` r
 m_script <- "% assign parameters
-K  = 5;
+K  = 1;
 wn = 10; 
 z  = 0.05;
 
@@ -94,7 +96,7 @@ Add new lines to the `m_script` string following the `bode(sys)` line, starting 
 ``` r
 # MATLAB commands for a bode plot
 m_script <- "% assign parameters
-K  = 5;
+K  = 1;
 wn = 10;
 z  = 0.05; 
 
@@ -146,7 +148,7 @@ cat(code_for_students)
 The output printed to the document is:
 
     % assign parameters
-    K  = 5;
+    K  = 1;
     wn = 10;
     z  = 0.05; 
 
@@ -181,7 +183,7 @@ sys <- read_lines('results/sys01.txt', skip = 3, n_max = 3)
 cat(sys, sep = "\n")
 ```
 
-                5
+                1
       ---------------------
       0.01 s^2 + 0.01 s + 1
 
@@ -243,7 +245,7 @@ if (!identical(oldrds, newrds)) {
 coda
 ----
 
--   Several of the housekeeping tasks in this script have since been made into functions and saved in [functions.R](functions.R).
+-   Several of the housekeeping tasks in this script have since been made into functions and saved in [`functions.R`](functions.R).
 -   These functions are used in the [revised Bode plot](03_bode.md) tutorial.
 
 session info
