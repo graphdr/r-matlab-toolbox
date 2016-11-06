@@ -19,7 +19,10 @@ I discuss the context and goals of this work in this [blog post](http://www.grap
 
 ## references 
 
-1. Christoph Schmidt (2016), *reach*, GitHub repository, https://github.com/schmidtchristoph/reach. 
+1. Christoph Schmidt (2016) *reach*, GitHub repository, https://github.com/schmidtchristoph/reach. 
+2. Jesse Hopkins (2009) *genpath\_exclude.m*, MathWorks File Exchange, https://www.mathworks.com/matlabcentral/fileexchange/22209-genpath-exclude. 
+
+
 
 
 --- 
