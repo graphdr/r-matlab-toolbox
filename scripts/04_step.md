@@ -63,7 +63,7 @@ Run the m-file.
 The function `run_mfile()` launches MATLAB only if the code has changed since the last run or if this run is the first. To force the code to run, delete the `derived/old.rds` file (if it exists).
 
 ``` r
-run_mfile(m_script, "m04")
+run_mfile(m_script, prefix = "m04")
 ```
 
 If, when running MATLAB from R, the Command window shows a "path" warning, run `set_path()`.
@@ -123,7 +123,7 @@ session_info()
      language (EN)                        
      collate  English_United States.1252  
      tz       America/New_York            
-     date     2016-11-05                  
+     date     2016-11-06                  
 
      package     * version date       source                                 
      assertthat    0.1     2013-12-06 CRAN (R 3.2.1)                         

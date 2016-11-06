@@ -5,7 +5,7 @@ dir_create <- function(dir) {
   lapply(dir, function(x) {if (!dir.exists(x)) {dir.create(x)}})
 }
 
-# add project directories to the MATLAB search path
+# add current working directory to MATLAB search path
 set_path <- function(...) {
   library(reach)
   m_script <- "pathstr = [cd];
@@ -14,26 +14,26 @@ set_path <- function(...) {
   reach::runMatlabCommand(m_script)
 }
 
-# execute the m-file for first run or if changed
-run_mfile <- function(m_script, prefix) {
+# run MATLAB script listed as a string in R
+run_mfile <- function(m_script, prefix = "m99", sec = 12) {
   library(reach)
-	dir_create("derived")
-	old_path <- paste0("derived/", prefix, "-old.rds")
-	new_path <- paste0("derived/", prefix, "-new.rds")
-  saveRDS(m_script, new_path)
-  if (!file.exists(old_path)) {
-    saveRDS(" ", old_path)
-  }
-  newrds <- readRDS(new_path)
-  oldrds <- readRDS(old_path)
+  dir_create("derived")
+  old_file <- paste0("derived/", prefix, "-old.rds")
+  new_file <- paste0("derived/", prefix, "-new.rds")
+  saveRDS(m_script, new_file)
+  # if first run, create empty old_file
+  if (!file.exists(old_file)) {saveRDS(" ", old_file)}
+  oldrds <- readRDS(old_file)
+  newrds <- readRDS(new_file)
+  # run if file has changed since last run
   if (!identical(oldrds, newrds)) {
-    saveRDS(m_script, old_path)
+    saveRDS(m_script, old_file)
     reach::runMatlabCommand(m_script)
-    Sys.sleep(12)
+    Sys.sleep(sec)
   }
 }
 
-# print lines from an m-file
+# print MATLAB script listed as a string in R
 print_mfile <- function(m_script) {
   library(stringr)
   if (str_detect(m_script, "% print_stop")) {
@@ -44,16 +44,16 @@ print_mfile <- function(m_script) {
     cat(code_for_students)
 }
 
-# print sys output from tf()
+# print MATLAB tf() output written to .txt
 print_sys <- function(filepath) {
   library(readr)
   sys <- read_lines(filepath, skip = 3, n_max = 3)
   cat(sys, sep = "\n")
 }
 
-# create an m-file
-make_m_file <- function(function_lines, filepath) {
-	cat(function_lines, file = filepath, sep = '\n', append = FALSE)
+# create an m-file from a MATLAB script listed as a string in R
+make_m_file <- function(listing, filepath) {
+	cat(listing, file = filepath, sep = '\n', append = FALSE)
 }
 
 ### MATLAB functions
@@ -69,6 +69,8 @@ end
 "
 dir_create("derived")
 make_m_file(function_lines, 'derived/write_sys.m')
+
+
 
 # write_gcf.m
 function_lines <- "

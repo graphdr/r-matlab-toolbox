@@ -64,7 +64,7 @@ The function `run_mfile()` launches MATLAB only if the code has changed since th
 
 ``` r
 # run the m-file if necessary
-run_mfile(m_script, "m03")
+run_mfile(m_script, prefix = "m03")
 ```
 
 If, when running MATLAB from R, the Command window shows a "path" warning, run `set_path()`.
@@ -124,7 +124,7 @@ session_info()
      language (EN)                        
      collate  English_United States.1252  
      tz       America/New_York            
-     date     2016-11-05                  
+     date     2016-11-06                  
 
      package     * version date       source                                 
      assertthat    0.1     2013-12-06 CRAN (R 3.2.1)                         

@@ -14,9 +14,9 @@ source('scripts/functions.R')
 
 ```{r}
 m_script <- "% assign parameters
-K  = 1;
+K  = 10;
 wn = 100;
-z  = 0.5;
+z  = 0.1;
 
 % create the transfer function
 n = K;
@@ -34,7 +34,7 @@ write_sys(sys, 'results/template_bode.txt')
 write_gcf(gcf, 'results/template_bode.png', 6, 6)
 "# end m-file
 
-run_mfile(m_script, "template_bode")
+run_mfile(m_script, prefix = "template_bode")
 ```
 
 ```{r}
